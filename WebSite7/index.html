@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Kontakt</title>
+    <meta charset="utf-8" />
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+    <!--CSS-->
+    <link href="CSS/RequestStyle.css" rel="stylesheet" />
+
+    <!--AngularJS CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <!--Angular Custom Script-->
+    <script src="Script/RequestApp.js"></script>
+</head>
+
+<body ng-app="requestApp" ng-controller="requestController">
+    <div class="header">
+        <ul>
+            <li><a href="#ExThree">ExThree</a></li>
+            <li><a href="#ExTwo">ExTwo</a></li>
+            <li><a href="#ExOne">ExOne</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+    
+        <h1>Kontakt Nordea Liv & Pension</h1>
+        <h3>Kontakt os ved at udfylde nedenstående formular - vi vender tilbage hurtigst muligt</h3>
+        
+        <div id="success-message">
+            <img src="Image/acceptPicture.png" />
+            <label> Success: din besked er blevet sendt</label>
+        </div>
+
+        <div class="form-style-3" id="main-form">
+            <form name="requestForm" ng-submit="submitForm(requestForm.$valid)" novalidate>
+
+                <fieldset id="fieldset-forespørgsel">
+                    <legend>Forespørgsel</legend>
+                    <label for="message">
+                        <span>Din besked <span class="required">*</span></span>
+                        <textarea name="message" class="textarea-field" ng-model="request.message" ng-required="true" ng-minlength="3" ng-maxlength="500"></textarea>
+                        <i class="tooltip-textarea"><span class="tooltip-text">Indtast din besked </span></i>
+                        <span id="error-message" ng-show="requestForm.message.$touched && requestForm.message.$error.required">Besked felt må ikke være tomt!</span>
+                        <span id="error-message" ng-show="requestForm.message.$touched && requestForm.message.$error.minlength">Minimum 3 bogstaver!</span>
+                        <span id="error-message" ng-show="requestForm.message.$touched && requestForm.message.$error.maxlength">Maximum 500 bostaver!</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Kontakt information</legend>
+                    <label for="name">
+                        <span>Fulde navn <span class="required">*</span></span>
+                        <input type="text" class="input-field" name="name" ng-model="request.name" ng-required="true" ng-minlength="3" ng-maxlength="500" value=""/>
+                        <i class="tooltip"><span class="tooltip-text"> Indtast dit fulde navn <br/>(Fornavn & efternavn, mellemnavn er valgfrit)</span></i>
+                        <span id="error-message" ng-show="requestForm.name.$touched && requestForm.name.$error.required">Fuldenavn skal indtastes!</span>
+                        <span id="error-message" ng-show="requestForm.name.$touched && requestForm.name.$error.minlength">Minimum 3 bogstaver!</span>
+                        <span id="error-message" ng-show="requestForm.name.$touched && requestForm.name.$error.maxlength">Maximum 60 bostaver!</span>
+                    </label>
+                    <label for="email">
+                        <span>E-mail adresse <span class="required">*</span></span>
+                        <input type="email" class="input-field" name="email" ng-model="request.email" ng-required="true" value=""/>
+                        <i class="tooltip"><span class="tooltip-text"> Indtast din e-mail adresse, så vi kan besvare din forspørgsel</span></i>
+                        <span id="error-message" ng-show="requestForm.email.$touched && requestForm.email.$error.required">En valid E-mail adresse skal indtastes!</span>
+                    </label>
+                    <label for="mobileNumber">
+                        <span>Mobilnummer <span class="required">*</span></span>
+                        <select name="countryCode" class="sel-country-code">
+                            <option data-countryCode="DK" value="45" Selected>(+45)</option>
+                            <optgroup label="Other countries">
+                                <option data-countryCode="BE" value="32">Belgium (+32)</option>
+                                <option data-countryCode="DK" value="45">Denmark (+45)</option>
+                                <option data-countryCode="FI" value="358">Finland (+358)</option>
+                                <option data-countryCode="FR" value="33">France (+33)</option>
+                                <option data-countryCode="DE" value="49">Germany (+49)</option>
+                                <option data-countryCode="GR" value="30">Greece (+30)</option>
+                                <option data-countryCode="GL" value="299">Greenland (+299)</option>
+                                <option data-countryCode="HK" value="852">Hong Kong (+852)</option>
+                                <option data-countryCode="IN" value="91">India (+91)</option>
+                                <option data-countryCode="IQ" value="964">Iraq (+964)</option>
+                                <option data-countryCode="IE" value="353">Ireland (+353)</option>
+                                <option data-countryCode="IL" value="972">Israel (+972)</option>
+                                <option data-countryCode="IT" value="39">Italy (+39)</option>
+                                <option data-countryCode="NL" value="31">Netherlands (+31)</option>
+                                <option data-countryCode="NO" value="47">Norway (+47)</option>
+                                <option data-countryCode="PH" value="63">Philippines (+63)</option>
+                                <option data-countryCode="PL" value="48">Poland (+48)</option>
+                                <option data-countryCode="PT" value="351">Portugal (+351)</option>
+                                <option data-countryCode="ES" value="34">Spain (+34)</option>
+                                <option data-countryCode="SE" value="46">Sweden (+46)</option>
+                                <option data-countryCode="CH" value="41">Switzerland (+41)</option>
+                                <option data-countryCode="SI" value="963">Syria (+963)</option>
+                                <option data-countryCode="TW" value="886">Taiwan (+886)</option>
+                                <option data-countryCode="TH" value="66">Thailand (+66)</option>
+                                <option data-countryCode="TR" value="90">Turkey (+90)</option>
+                                <option data-countryCode="GB" value="44">UK (+44)</option>
+                                <option data-countryCode="UA" value="380">Ukraine (+380)</option>
+                                <option data-countryCode="AE" value="971">United Arab Emirates (+971)</option>
+                                <option data-countryCode="UY" value="598">Uruguay (+598)</option>
+                                <option data-countryCode="US" value="1">USA (+1)</option>
+                            </optgroup>
+                        </select>
+                        <input type="number" class="input-field" name="mobileNumber" ng-model="request.mobileNumber" ng-required="true" ng-minlength="8" ng-maxlength="8" value=""/>
+                        <i class="tooltip"><span class="tooltip-text">Vælg lande kode for mobil nummer<br/>(fx.: +45) <br/>Indtast dit mobil nummer<br/>(8 tal, exclusiv landekode)</span></i>
+                        <span id="error-message" ng-show="requestForm.mobileNumber.$touched && requestForm.mobileNumber.$error.required">Mobil nummer skal indtastes!</span>
+                        <span id="error-message" ng-show="requestForm.mobileNumber.$touched && requestForm.mobileNumber.$error.minlength || requestForm.mobileNumber.$error.maxlength ">Mobil nummer skal være præcis 8 tal!</span>
+                    </label>
+                    <label>
+                        <span>&nbsp;</span>
+                        <input type="submit" value="Send" name="submit-Btn"/>
+                    </label>
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+</body>
+</html>
